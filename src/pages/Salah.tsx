@@ -52,7 +52,7 @@ function Timetable({ timings }: { timings: Timings | null }) {
   return (
     <div className="card">
       <h2>Today’s Salah Times — Leicester, UK</h2>
-      <div className="grid" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 12 }}>
+      <div className="grid grid-3">
         <div className="widget"><strong>Fajr</strong><div>{timings.Fajr}</div></div>
         <div className="widget"><strong>Sunrise</strong><div>{timings.Sunrise}</div></div>
         <div className="widget"><strong>Dhuhr</strong><div>{timings.Dhuhr}</div></div>
@@ -147,7 +147,7 @@ export default function Salah() {
   const settingsUI = (
     <div className="card">
       <h3 className="card-title">Settings</h3>
-      <div className="grid" style={{ gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 12 }}>
+      <div className="grid grid-2">
         <label className="widget">
           <div><strong>Calculation Method</strong></div>
           <select value={settings.method} onChange={(e) => {
@@ -176,7 +176,7 @@ export default function Salah() {
           </select>
         </label>
       </div>
-      <div className="grid" style={{ gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', gap: 12, marginTop: 12 }}>
+      <div className="grid grid-prayer-offsets" style={{ marginTop: 12 }}>
         {(['Fajr','Dhuhr','Asr','Maghrib','Isha'] as const).map(name => (
           <label key={name} className="widget">
             <div><strong>{name} Offset (mins)</strong></div>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Tabs from '../components/Tabs'
+import MasjidImage from '../components/masjid/MasjidImage'
 import { EventItem, saveEvent, upcomingEvents, pastEvents } from '../lib/eventsStore'
 
 function EventCard({ item }: { item: EventItem }) {
@@ -8,7 +9,7 @@ function EventCard({ item }: { item: EventItem }) {
   return (
     <div className="card" style={{ display: 'grid', gap: 8 }}>
       {item.imageDataUrl && (
-        <img src={item.imageDataUrl} alt={item.title} style={{ width: '100%', borderRadius: 8 }} />
+        <MasjidImage src={item.imageDataUrl} alt={item.title} style={{ width: '100%', borderRadius: 8, maxHeight: 220, objectFit: 'cover' }} />
       )}
       <h3 className="card-title" style={{ marginBottom: 0 }}>{item.title}</h3>
       <p style={{ margin: 0, color: '#374151' }}>{item.venue} — {dateStr}</p>
@@ -62,7 +63,7 @@ function AddEventForm({ onSaved }: { onSaved: () => void }) {
       <h3 className="card-title">Add Event</h3>
       <input type="text" placeholder="Event Title" value={title} onChange={e => setTitle(e.target.value)} style={input} />
       <input type="text" placeholder="Venue" value={venue} onChange={e => setVenue(e.target.value)} style={input} />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+      <div className="grid-form-2">
         <input type="date" value={date} onChange={e => setDate(e.target.value)} style={input} />
         <input type="time" value={time} onChange={e => setTime(e.target.value)} style={input} />
       </div>
@@ -92,14 +93,14 @@ export default function Events() {
   useEffect(() => { refresh() }, [])
 
   const upcomingTab = (
-    <div className="grid" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
+    <div className="grid grid-auto">
       {upcoming.length === 0 && <div className="card"><p>No upcoming events yet.</p></div>}
       {upcoming.map(e => (<EventCard key={e.id} item={e} />))}
     </div>
   )
 
   const pastTab = (
-    <div className="grid" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
+    <div className="grid grid-auto">
       {past.length === 0 && <div className="card"><p>No past events found.</p></div>}
       {past.map(e => (<EventCard key={e.id} item={e} />))}
     </div>

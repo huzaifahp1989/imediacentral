@@ -14,8 +14,12 @@ export default function SalahCountdown({ nextPrayerName = 'Asr', nextPrayerTime 
   const s = Math.max(0, Math.floor((delta % 60000) / 1000))
 
   return (
-    <div className="card">
-      <strong>Next Prayer:</strong> {nextPrayerName} — in {h}h {m}m {s}s
+    <div className="card" style={{ textAlign: 'center', background: 'var(--emerald-50)', borderColor: 'var(--emerald)' }}>
+      <div style={{ fontSize: 13, color: 'var(--muted)', marginBottom: 4 }}>Next Prayer</div>
+      <div style={{ fontSize: 24, fontWeight: 800, color: 'var(--emerald)' }}>{nextPrayerName}</div>
+      <div style={{ fontSize: 28, fontWeight: 800, marginTop: 8, fontVariantNumeric: 'tabular-nums' }}>
+        {String(h).padStart(2, '0')}:{String(m).padStart(2, '0')}:{String(s).padStart(2, '0')}
+      </div>
     </div>
   )
 }

@@ -1,0 +1,185 @@
+/* Mobile-first responsive enhancements */
+
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+.grid-compass { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: start; }
+.grid-form-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.grid-prayer-offsets { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.grid-jumuah { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
+.grid-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 12px; }
+.grid-fit-sm { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+
+.section-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.section-header h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.5rem); }
+
+html { overflow-x: hidden; }
+body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+img, video, iframe { max-width: 100%; }
+.masjid-card-image { width: 100%; height: auto; min-height: 160px; max-height: 200px; aspect-ratio: 16 / 9; object-fit: cover; }
+
+@media (max-width: 768px) {
+  .btn, .tab, .filter-chip, .quick-action-btn, .mobile-toggle {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto 1fr !important;
+    grid-template-areas: 'header' 'content' !important;
+  }
+
+  aside.sidebar { display: none !important; }
+
+  .app-main > .content { padding: 12px 14px 24px; min-width: 0; }
+  .app-main > footer.site-footer { margin: 0 14px 120px; }
+
+  header.app-header {
+    flex-wrap: wrap;
+    padding: 10px 12px;
+    gap: 8px;
+    position: relative;
+    z-index: 200;
+  }
+
+  .header-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+
+  .brand { min-width: 0; flex: 1; }
+  .brand .title {
+    font-size: clamp(13px, 3.5vw, 16px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .brand img { width: 32px; height: 32px; flex-shrink: 0; }
+
+  .mobile-toggle {
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  nav.primary-nav.tabs {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: #fff;
+    padding: 12px;
+    gap: 6px;
+    z-index: 150;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 20px 20px;
+    max-height: min(70vh, 480px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  nav.primary-nav.tabs.open { display: flex; }
+
+  nav.primary-nav.tabs .tab {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    text-align: center;
+    padding: 12px 16px;
+    width: 100%;
+  }
+
+  nav.primary-nav.tabs .tab.active::after { display: none; }
+
+  nav.primary-nav.tabs .btn-gold {
+    margin: 8px 0 0 !important;
+    width: 100%;
+  }
+
+  .mobile-toggle:not(.desktop-only) { display: inline-flex !important; }
+
+  .grid-2, .grid-3, .grid-compass, .grid-form-2 { grid-template-columns: 1fr !important; }
+  .grid-prayer-offsets { grid-template-columns: repeat(2, 1fr) !important; }
+
+  .uk-hero { min-height: min(520px, 85vh); padding: 32px 16px; border-radius: 20px; }
+
+  .search-box { flex-direction: column; border-radius: 20px; padding: 12px; gap: 8px; }
+  .search-box input { width: 100%; padding: 12px; font-size: 16px; }
+  .search-box button { width: 100%; padding: 14px; }
+
+  .quick-actions { gap: 8px; }
+  .quick-action-btn { font-size: 13px; padding: 10px 14px; flex: 1 1 calc(50% - 8px); justify-content: center; }
+
+  .stats-bar { grid-template-columns: repeat(2, 1fr); margin-top: 16px; padding: 0; gap: 10px; }
+  .stat-card { padding: 14px; }
+  .stat-value { font-size: 22px; }
+
+  .page-header { padding: 24px 18px; border-radius: 20px; }
+
+  .profile-cover { height: 180px; margin-bottom: -40px; border-radius: 16px; }
+  .profile-header-card { padding: 16px; margin-top: 8px; }
+
+  .map-embed { height: 240px; }
+
+  .timetable-scroll { max-height: 360px; overflow-x: auto; }
+  .timetable-table { font-size: 12px; min-width: 520px; }
+
+  .card, .widget { padding: 14px; border-radius: 16px; }
+
+  footer.site-footer { padding: 20px 16px; margin-top: 16px; border-radius: 16px; }
+  .footer-grid { grid-template-columns: 1fr !important; gap: 20px; }
+
+  .floating-player { left: 8px; right: 8px; bottom: 8px; width: auto; }
+
+  .search-filters { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  .search-filters .filter-chip { flex: 0 0 auto; white-space: nowrap; }
+
+  .tabs-scroll .tab { font-size: 13px; padding: 10px 14px; border-radius: 12px; }
+  .info-grid { grid-template-columns: 1fr !important; }
+  .prayer-cell-time { font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+  .quick-action-btn { flex: 1 1 100%; }
+  .stat-value { font-size: 20px; }
+}
+
+@media (min-width: 769px) {
+  .mobile-only { display: none !important; }
+  .mobile-toggle:not(.desktop-only) { display: none !important; }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .mobile-toggle.desktop-only {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-only { display: none !important; }
+}

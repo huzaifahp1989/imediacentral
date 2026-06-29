@@ -99,6 +99,15 @@ nav.primary-nav a.active { background: var(--bg); }
 /* Tab-style menu */
 nav.primary-nav.tabs { gap: 4px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
 .tabs { display: flex; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 6px; flex-wrap: wrap; }
+.tabs-scroll {
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  max-width: 100%;
+}
+.tabs-scroll::-webkit-scrollbar { display: none; }
+.tabs-scroll .tab { flex: 0 0 auto; white-space: nowrap; }
 .tab { padding: 10px 12px; border-radius: 14px 14px 0 0; background: #fff; border: 1px solid var(--border); border-bottom: none; box-shadow: 0 6px 12px rgba(0,0,0,0.06); position: relative; color: var(--text); }
 .tab:hover { background: #f9fafb; }
 .tab.active { background: #f7fafc; }
@@ -114,6 +123,18 @@ aside.sidebar {
 .content {
   grid-area: content;
   padding: 20px;
+}
+
+.app-main {
+  grid-area: content;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main > .content {
+  flex: 1;
+  grid-area: unset;
 }
 
 .widget { border: 1px solid var(--border); border-radius: 18px; padding: 14px; margin-bottom: 16px; background: var(--grad-card); box-shadow: 0 10px 24px rgba(0,0,0,0.06); }
@@ -133,28 +154,17 @@ aside.sidebar {
 @media (max-width: 900px) {
   .app {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: auto 1fr;
     grid-template-areas:
       'header'
-      'sidebar'
       'content';
   }
-  /* Keep menu visible on laptops/tablets; make it horizontally scrollable if needed */
-  .mobile-toggle { display: none; }
-  nav.primary-nav.tabs { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 8px; }
-  .tabs { gap: 6px; }
-  .tab { flex: 0 0 auto; }
   aside.sidebar { display: none; }
   aside.sidebar.open { display: block; }
   .hero { min-height: 220px; }
 }
 
-/* Only hide the menu on small phones, reveal with the toggle */
-@media (max-width: 640px) {
-  .mobile-toggle { display: inline-block; padding: 8px 10px; border: 1px solid var(--border); background: #fff; border-radius: 8px; margin-left: 8px; }
-  nav.primary-nav.tabs { display: none; }
-  nav.primary-nav.tabs.open { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 8px; }
-}
+/* Mobile nav — see mobile.css */
 
 /* Hero slider */
 .hero {
@@ -176,6 +186,10 @@ aside.sidebar {
 .banner-slider { position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: 18px; background: var(--grad-card); box-shadow: 0 12px 28px rgba(0,0,0,0.06); }
 .banner-track { display: flex; transition: transform 500ms ease; }
 .banner-slide { min-width: 100%; padding: 16px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; }
+@media (max-width: 640px) {
+  .banner-slide { grid-template-columns: 1fr; }
+  .banner-title { font-size: 18px; }
+}
 .banner-title { font-size: 20px; font-weight: 700; }
 .banner-sub { font-size: 14px; color: #374151; }
 .banner-controls { position: absolute; right: 8px; bottom: 8px; display: flex; gap: 6px; }

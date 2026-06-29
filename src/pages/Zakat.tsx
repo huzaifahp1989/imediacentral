@@ -27,7 +27,7 @@ function FullZakatCalculator() {
     setValues(v => ({ ...v, [key]: e.target.value }))
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 12 }}>
+    <div className="grid grid-2">
       <div>
         <label>Cash (GBP)</label>
         <input type="number" value={values.cash} onChange={update('cash')} style={inputStyle} />

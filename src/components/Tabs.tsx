@@ -12,7 +12,7 @@ export default function Tabs({ items, defaultKey }: Props) {
   const [active, setActive] = useState(firstKey)
   return (
     <div>
-      <div className="tabs" role="tablist">
+      <div className="tabs tabs-scroll" role="tablist">
         {items.map(it => (
           <button
             key={it.key}

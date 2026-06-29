@@ -1,0 +1,113 @@
+import type { Masjid } from './types'
+import { photoForId } from './images'
+import { emasjidStream } from './emasjid'
+
+const base = (m: Omit<Masjid, 'cityId' | 'coverImage' | 'gallery' | 'events' | 'announcements' | 'rating' | 'reviewCount'> & {
+  coverImage?: string
+  gallery?: string[]
+  events?: Masjid['events']
+  announcements?: string[]
+  rating?: number
+  reviewCount?: number
+}): Masjid => ({
+  cityId: 'coventry',
+  coverImage: photoForId(m.id),
+  gallery: [],
+  events: [],
+  announcements: [],
+  rating: 4.5,
+  reviewCount: 45,
+  ...m,
+})
+
+export const COVENTRY_MASJIDS: Masjid[] = [
+  base({
+    id: 'c1',
+    slug: 'masjid-zeenatul-islam-coventry',
+    name: 'Masjid Zeenatul Islam',
+    address: '283–287 Stoney Stanton Road, Hillfields',
+    postcode: 'CV1 4FR',
+    lat: 52.4082,
+    lng: -1.4984,
+    phone: '024 7622 2774',
+    email: 'info@masjidzeenatulislam.org',
+    emasjidSlug: 'zeenatul_islam_coventry',
+    description: 'Masjid Zeenatul Islam on Stoney Stanton Road — one of Coventry\'s largest masjids, serving Hillfields and the wider city.',
+    jumuahTimes: ['13:30'],
+    services: ['madrasah', 'funeral', 'nikah', 'food-bank', 'disabled-access', 'womens-facilities'],
+    liveStream: emasjidStream('zeenatul_islam_coventry', 'Masjid Zeenatul Islam — eMasjid Live'),
+    featured: true,
+    rating: 4.7,
+    reviewCount: 156,
+  }),
+  base({
+    id: 'c2',
+    slug: 'masjid-e-zakariya-coventry',
+    name: 'Masjid-e-Zakariya',
+    address: '1–5 Berry Street, Hillfields',
+    postcode: 'CV1 5JT',
+    lat: 52.4061,
+    lng: -1.4928,
+    phone: '07749 627011',
+    email: 'admin@masjidezakariya.com',
+    website: 'https://masjidezakariya.com',
+    emasjidSlug: 'masjidezakariya',
+    description: 'Masjid-e-Zakariya (Hillfields Muslim Association) on Berry Street — community masjid with official eMasjid Live.',
+    jumuahTimes: ['13:30'],
+    services: ['madrasah', 'funeral', 'nikah', 'youth-club'],
+    liveStream: emasjidStream('masjidezakariya', 'Masjid-e-Zakariya — eMasjid Live'),
+    featured: true,
+    rating: 4.6,
+    reviewCount: 98,
+  }),
+  base({
+    id: 'c3',
+    slug: 'tq-trust-coventry',
+    name: 'Ta\'leem-ul-Quran Trust',
+    address: '51 Princess Street, Foleshill',
+    postcode: 'CV6 5BW',
+    lat: 52.4186,
+    lng: -1.5124,
+    website: 'https://www.tqtrust.co.uk',
+    emasjidSlug: 'tqtrust',
+    description: 'Ta\'leem-ul-Quran Trust in Foleshill — Islamic education centre and masjid with live eMasjid audio.',
+    jumuahTimes: ['13:30'],
+    services: ['madrasah', 'counselling', 'youth-club', 'womens-programme'],
+    liveStream: emasjidStream('tqtrust', 'Ta\'leem-ul-Quran Trust — eMasjid Live'),
+    featured: true,
+    rating: 4.6,
+    reviewCount: 87,
+  }),
+  base({
+    id: 'c4',
+    slug: 'uewt-coventry',
+    name: 'Umar Educational & Welfare Trust',
+    address: '137 Avon Street, Hillfields',
+    postcode: 'CV2 3GQ',
+    lat: 52.4048,
+    lng: -1.4876,
+    emasjidSlug: 'uewt',
+    description: 'Umar Educational & Welfare Trust on Avon Street — masjid and welfare centre serving Coventry Muslims.',
+    jumuahTimes: ['13:30'],
+    services: ['madrasah', 'food-bank', 'counselling', 'funeral', 'nikah'],
+    liveStream: emasjidStream('uewt', 'UEWT — eMasjid Live'),
+    rating: 4.5,
+    reviewCount: 72,
+  }),
+  base({
+    id: 'c5',
+    slug: 'islamic-academy-coventry',
+    name: 'Islamic Academy of Coventry',
+    address: 'Red Lane, Foleshill',
+    postcode: 'CV6 5EE',
+    lat: 52.4210,
+    lng: -1.5088,
+    emasjidSlug: 'islamicacademycoventry',
+    description: 'Islamic Academy of Coventry — madrasah and masjid facilities in Foleshill.',
+    jumuahTimes: ['13:30'],
+    services: ['madrasah', 'youth-club', 'womens-programme'],
+    liveStream: emasjidStream('islamicacademycoventry', 'Islamic Academy of Coventry — eMasjid Live'),
+    rating: 4.4,
+    reviewCount: 41,
+  }),
+]

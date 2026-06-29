@@ -21,7 +21,7 @@ export default function QuickZakatCalculator() {
     setValues(v => ({ ...v, [key]: e.target.value }))
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 12 }}>
+    <div className="grid grid-3">
       <div>
         <label>Cash (GBP)</label>
         <input type="number" value={values.cash} onChange={update('cash')} style={inputStyle} />

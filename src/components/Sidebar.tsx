@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import FeedList from './FeedList'
 
@@ -73,5 +74,3 @@ function QuickZakatWidget() {
     </div>
   )
 }
-
-import { useState } from 'react'
